@@ -26,7 +26,7 @@ module.exports = (req,res,next) => {
             .send({message: 'failed to authenticate with token', errDetails:err.message })
         }
 
-        //if token was validated correctly assign the username to the request object for future uses
+        //if the token was validated correctly assign the username to the request object for future uses
         //before invoke the next method for continue with the below middlewares
         req.username = decoded.username;
         next();
