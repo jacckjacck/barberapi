@@ -6,4 +6,8 @@ userRouter.get("/",authMiddleware,
     userService.GetUsers
 );
 
+userRouter.post('/', 
+    userService.AddUser
+);
+
 module.exports = userRouter;
