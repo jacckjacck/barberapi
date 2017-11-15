@@ -13,7 +13,7 @@ describe('/GET Users', () => {
     before((done) => {
         chai.request(server)
         .post('/auth')
-        .send({username:'jagomez', password:'J0rg310', cedula:1})
+        .send({username:'jagomez', password:'p@$$w0rD', cedula:1})
         .end((err,res) => {
             token = res.body.token;
             
