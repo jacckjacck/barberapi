@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 const path = require('path');
 const morgan = require('morgan');
 const helmet = require('helmet');
-
+const cors = require('cors');
 //Init base variables
 const app = express();
 const port = process.env.PORT || 8082;
@@ -21,6 +21,7 @@ const authRoute = require('./routes/auth');
 
 
 //Assign middlewares
+app.use(cors({origin:'http://url', optionsSuccessStatus:200}));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
