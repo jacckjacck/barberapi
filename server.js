@@ -42,3 +42,5 @@ app.get('/', (req, res)=>{
 app.listen(port,() =>{
     console.log("Live on %s", port);
 })
+
+module.exports = app;
