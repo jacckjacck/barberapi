@@ -24,14 +24,28 @@ UserModuleExport.GetUsers = (req, res, next) => {
 
 UserModuleExport.AddUser = (req, res, next) => {
 
+    //check if the user already exists
+    User.find({ email: req.body.email})
+    .count()
+    .exec((err, count) => {
+        if(err){
+            return res.status(500).json({error: 'There was and error validating the user information.'});
+        }else{
+            if( count > 0){
+                return res.status(403).json({error: 'The user email already exists.'});
+            }
+        }
+    });
+
 
     bcrypt.hash(req.body.password,10, function(err, hashedpass){
         if(err){
-            return res.status(500).json({error: 'There was and error hashing the password'});
+            return res.status(500).json({error: 'There was and error hashing the password.'});
         }else{
             var newUser = new User({
                 name: req.body.username,
-                password: hashedpass
+                password: hashedpass,
+                email: req.body.email
             });
 
             newUser.save(function(err, user, numRows){

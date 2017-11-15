@@ -12,7 +12,7 @@ module.exports = (req,res,next) => {
 
     if(!req.headers.authorization){
         return res
-        .status(403)
+        .status(401)
         .send({message:"No token provided."})
     }
 
