@@ -39,7 +39,10 @@ app.get('/', (req, res)=>{
 });
 
 //Raise server
-app.listen(port,() =>{
+app.listen(port,(err) =>{
+    if(err){
+        throw err;
+    }
     console.log("Live on %s", port);
 })
 

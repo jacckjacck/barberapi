@@ -22,6 +22,20 @@ UserModuleExport.GetUsers = (req, res, next) => {
     });
 };
 
+UserModuleExport.GetByUserName = (req, res, next) =>{
+    User
+    .findOne({name : req.params.username})
+    .select('-_id name email')
+    .exec(function(err,data){
+        if(err){
+            return res.status(404).json({});
+        }else{
+            return res.status(200).json(data);
+        }
+    });
+}
+
+
 UserModuleExport.AddUser = (req, res, next) => {
 
     //check if the user already exists
@@ -58,18 +72,5 @@ UserModuleExport.AddUser = (req, res, next) => {
         }
     });
 };
-
-UserModuleExport.GetUser = (req, res, next) =>{
-    User
-    .findOne({name : req.username})
-    .select('password')
-    .exec(function(err,data){
-        if(err){
-            return res.status(404).json({});
-        }else{
-            return data;
-        }
-    });
-}
 
 module.exports = UserModuleExport;

@@ -6,6 +6,10 @@ userRouter.get("/",authMiddleware,
     userService.GetUsers
 );
 
+userRouter.get("/:username", authMiddleware,
+    userService.GetByUserName
+);
+
 userRouter.post('/', 
     userService.AddUser
 );
