@@ -6,7 +6,6 @@ var server = require('../../server');
 var should = chai.should();
 var expect = chai.expect;
 
-var User = require('../../models/User')
 
 chai.use(chaiHttp);
 
