@@ -1,7 +1,7 @@
 {
-    "name": "Task API documentation",
+    "name": "Barber API documentation",
     "version": "0.0.0",
-    "description": "API task list manager",
+    "description": "Barberapi application documentation",
     "template": {
         "forceLanguage": "en"
     }
