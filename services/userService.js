@@ -12,10 +12,10 @@ var UserModuleExport = {};
 UserModuleExport.GetUsers = (req, res, next) => {
     //console.log(req.username);
     User.find({})
-    .select('-_id name')
+    .select('-_id name email')
     .exec(function(err, data){
         if(err){
-            return res.status(404).json({});
+            return res.status(500).json({err : err.message});
         }else{
             return res.status(200).json(data);
         }
@@ -28,7 +28,7 @@ UserModuleExport.GetByUserName = (req, res, next) =>{
     .select('-_id name email')
     .exec(function(err,data){
         if(err){
-            return res.status(404).json({});
+            return res.status(500).json({err : err.message});
         }else{
             return res.status(200).json(data);
         }

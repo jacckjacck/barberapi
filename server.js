@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(helmet());
 app.use('/users', userRoute);
 app.use('/auth', authRoute);
+app.use(express.static('public'));
 
 //Init Database Connection
 mongoose.Promise = global.Promise;
